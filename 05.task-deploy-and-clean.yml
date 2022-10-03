@@ -20,11 +20,16 @@ spec:
           mkdir build-folder ;
           cp target/*.jar build-folder/ ;
 
-          oc login --insecure-skip-tls-verify --token=my-openshift-token --server=https://api.my-openshift-url.com:6443 ;
+          env | grep KUBERNETES
+          TOKEN=`cat /var/run/secrets/kubernetes.io/serviceaccount/token`    
+          oc login --insecure-skip-tls-verify --token=$TOKEN --server=https://$KUBERNETES_SERVICE_HOST:$KUBERNETES_SERVICE_PORT ;
 
-          oc new-build  --name hello-world --binary=true -n tekton-springboot-deploy --image-stream=openjdk-11  || true ;
+          oc new-build  --name hello-world --strategy=source --binary=true -n tekton-springboot-deploy --image-stream=ubi8-openjdk-11 || true ;
+
           oc start-build hello-world --from-dir=build-folder/. -n tekton-springboot-deploy --follow --wait ;
+
           oc new-app hello-world -n tekton-springboot-deploy || true ;
+
           oc expose svc/hello-world -n tekton-springboot-deploy || true ;
 
           cd / ;
