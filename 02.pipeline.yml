@@ -14,7 +14,7 @@ spec:
       name: git-clone
     params:
     - name: app-git
-      value: https://github.com/edwin/spring-boot-hello-world
+      value: https://github.com/jguillemat/spring-boot-hello-world
     - name: uid
       value: $(params.uid)
     workspaces:

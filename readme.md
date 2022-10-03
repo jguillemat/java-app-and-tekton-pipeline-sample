@@ -8,12 +8,12 @@ Tools
 How To
 --------------------
 ``` 
-oc create -f 01.pvc.yml -n edwin-pipeline
-oc create -f 02.pipeline.yml -n edwin-pipeline
-oc create -f 03.task-git-clone.yml -n edwin-pipeline
-oc create -f 04.task-mvn.yml -n edwin-pipeline
-oc create -f 05.task-deploy-and-clean.yml -n edwin-pipeline
-oc create -f 06.pipeline-run.yml -n edwin-pipeline
+oc create -f 01.pvc.yml -n tekton-springboot-pipeline
+oc create -f 02.pipeline.yml -n tekton-springboot-pipeline
+oc create -f 03.task-git-clone.yml -n tekton-springboot-pipeline
+oc create -f 04.task-mvn.yml -n tekton-springboot-pipeline
+oc create -f 05.task-deploy-and-clean.yml -n tekton-springboot-pipeline
+oc create -f 06.pipeline-run.yml -n tekton-springboot-pipeline
 ```
 
 Java Code

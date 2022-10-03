@@ -22,10 +22,10 @@ spec:
 
           oc login --insecure-skip-tls-verify --token=my-openshift-token --server=https://api.my-openshift-url.com:6443 ;
 
-          oc new-build  --name hello-world --binary=true -n edwin-deploy --image-stream=openjdk-11  || true ;
-          oc start-build hello-world --from-dir=build-folder/. -n edwin-deploy --follow --wait ;
-          oc new-app hello-world -n edwin-deploy || true ;
-          oc expose svc/hello-world -n edwin-deploy || true ;
+          oc new-build  --name hello-world --binary=true -n tekton-springboot-deploy --image-stream=openjdk-11  || true ;
+          oc start-build hello-world --from-dir=build-folder/. -n tekton-springboot-deploy --follow --wait ;
+          oc new-app hello-world -n tekton-springboot-deploy || true ;
+          oc expose svc/hello-world -n tekton-springboot-deploy || true ;
 
           cd / ;
           rm -Rf /workspace/source/$(params.uid) ;
